@@ -1,0 +1,3 @@
+[submodule "avTranscoder"]
+	path = avTranscoder
+	url = https://github.com/avTranscoder/avTranscoder.git
