@@ -47,6 +47,7 @@ Java binding for %{name}.
 %setup -q -n %{name}-%{version}
 
 %build
+cd avTranscoder
 cp tools/scons.fedora.cfg scons.cfg
 scons
 
@@ -56,20 +57,20 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{py_sitedir}/AvTranscoder
-install -D -m 0755 build/app/av++ %{buildroot}%{_bindir}
-install -D -m 0755 build/app/avmeta %{buildroot}%{_bindir}
-install -D -m 0755 build/app/avinfo %{buildroot}%{_bindir}
-install -D -m 0755 build/app/avprocessor %{buildroot}%{_bindir}
+install -D -m 0755 avTranscoder/build/app/av++ %{buildroot}%{_bindir}
+install -D -m 0755 avTranscoder/build/app/avmeta %{buildroot}%{_bindir}
+install -D -m 0755 avTranscoder/build/app/avinfo %{buildroot}%{_bindir}
+install -D -m 0755 avTranscoder/build/app/avprocessor %{buildroot}%{_bindir}
 
-install -D -m 0644 app/*/av++.man %{buildroot}%{_mandir}/man1/av++.1
-install -D -m 0644 app/*/avinfo.man %{buildroot}%{_mandir}/man1/avinfo.1
-install -D -m 0644 app/*/avmeta.man %{buildroot}%{_mandir}/man1/avmeta.1
-install -D -m 0644 app/*/avprocessor.man %{buildroot}%{_mandir}/man1/avprocessor.1
+install -D -m 0644 avTranscoder/app/*/av++.man %{buildroot}%{_mandir}/man1/av++.1
+install -D -m 0644 avTranscoder/app/*/avinfo.man %{buildroot}%{_mandir}/man1/avinfo.1
+install -D -m 0644 avTranscoder/app/*/avmeta.man %{buildroot}%{_mandir}/man1/avmeta.1
+install -D -m 0644 avTranscoder/app/*/avprocessor.man %{buildroot}%{_mandir}/man1/avprocessor.1
 
-cp build/src/lib*.so.0.0.1  %{buildroot}%{_libdir}
-cp build/src/lib*.so.0  %{buildroot}%{_libdir}
-cp build/src/libsAvTranscoder.a  %{buildroot}%{_libdir}
-cp build/src/AvTranscoder/AvTranscoder.py %{buildroot}%{py_sitedir}/AvTranscoder
+cp avTranscoder/build/src/lib*.so.0.0.1  %{buildroot}%{_libdir}
+cp avTranscoder/build/src/lib*.so.0  %{buildroot}%{_libdir}
+cp avTranscoder/build/src/libsAvTranscoder.a  %{buildroot}%{_libdir}
+cp avTranscoder/build/src/AvTranscoder/AvTranscoder.py %{buildroot}%{py_sitedir}/AvTranscoder
 touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 
 %post -p /sbin/ldconfig
