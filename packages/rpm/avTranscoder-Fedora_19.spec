@@ -17,6 +17,7 @@ BuildRequires:  libavcodec-devel
 BuildRequires:  libswscale-devel
 BuildRequires:  libavresample-devel
 BuildRequires:  mesa-libGL-devel
+BuildRequires:  freeglut-devel
 Source:         %{name}-%{version}.tar.xz
 Provides:       avmeta
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
