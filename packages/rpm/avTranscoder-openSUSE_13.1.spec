@@ -25,6 +25,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 High level API to read, decode, transform, encode and write video formats using FFmpeg or LibAV.
 
+%package -n libAvTranscoder0
+Summary: library %{name}
+
+%description -n libAvTranscoder0
+Shared libraries for the package %{name}.
+
 %package devel
 Summary: Development files for %{name}
 
@@ -41,7 +47,7 @@ Provide the python binding upon %{name} C++ library	.
 Summary: Java binding for %{name}
 
 %description java
-Java binding for %{name}.
+Java binding for %{name}. Require more updates for complete deployement.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -73,8 +79,8 @@ cp avTranscoder/build/src/lib*.so  %{buildroot}%{_libdir}
 cp avTranscoder/build/src/libsAvTranscoder.a  %{buildroot}%{_libdir}
 cp avTranscoder/build/src/AvTranscoder/AvTranscoder.py %{buildroot}%{py_sitedir}/AvTranscoder
 touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
-%fdupes %{buildroot}%{_libdir}/lib*.so.0
-%fdupes %{buildroot}%{_libdir}/lib*.so
+%fdupes -s %{buildroot}%{_libdir}/lib*.so.0
+%fdupes -s %{buildroot}%{_libdir}/lib*.so
 
 %post -p /sbin/ldconfig
 
@@ -83,9 +89,11 @@ touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 %files
 %defattr(-,root,root)
 /%{_bindir}/av*
+/%{_mandir}/man1/*.1.gz
+
+%files -n libAvTranscoder0
 /%{_libdir}/libAvTranscoder.so
 /%{_libdir}/lib*.so.*
-/%{_mandir}/man1/*.1.gz
 
 %files devel
 %defattr(-,root,root)
