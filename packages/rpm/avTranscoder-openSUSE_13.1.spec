@@ -6,7 +6,7 @@ License:        GPL-3.0+
 Summary:        C++ API under LibAV and FFmpeg libraries
 Url:            http://www.TuttleOFX.org
 Group:          Development/Languages/C and C++
-BuildRequires:  scons
+BuildRequires:  scons >= 2.3.0
 BuildRequires:  gcc-c++
 BuildRequires:  swig
 BuildRequires:  java-1_7_0-openjdk-devel

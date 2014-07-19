@@ -6,7 +6,7 @@ License:        GPL-3.0+
 Summary:        C++ API under LibAV and FFmpeg libraries
 Url:            http://www.TuttleOFX.org
 Group:          Development/Languages/C and C++
-BuildRequires:  scons
+BuildRequires:  scons >= 2.3.0
 BuildRequires:  gcc-c++
 BuildRequires:  swig
 BuildRequires:  java-1_7_0-openjdk-devel
@@ -16,12 +16,19 @@ BuildRequires:  libavformat-devel
 BuildRequires:  libavcodec-devel
 BuildRequires:  libswscale-devel
 BuildRequires:  libavresample-devel
+BuildRequires:  freeglut-devel
 Source:         %{name}-%{version}.tar.xz
 Provides:       avmeta
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 High level API to read, decode, transform, encode and write video formats using FFmpeg or LibAV.
+
+%package -n libAvTranscoder0
+Summary: Library %{name}
+
+%description -n libAvTranscoder0
+Shared libraries for the package %{name}.
 
 %package devel
 Summary: Development files for %{name}
@@ -39,7 +46,7 @@ Provide the python binding upon %{name} C++ library	.
 Summary: Java binding for %{name}
 
 %description java
-Java binding for %{name}.
+Java binding for %{name}. Require more updates for complete deployement.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -66,28 +73,46 @@ install -D -m 0644 avTranscoder/app/*/avmeta.man %{buildroot}%{_mandir}/man1/avm
 install -D -m 0644 avTranscoder/app/*/avprocessor.man %{buildroot}%{_mandir}/man1/avprocessor.1
 
 cp avTranscoder/build/src/lib*.so.0.0.1  %{buildroot}%{_libdir}
-cp avTranscoder/build/src/lib*.so.0  %{buildroot}%{_libdir}
+cp -P avTranscoder/build/src/lib*.so.0  %{buildroot}%{_libdir}
+cp -P avTranscoder/build/src/lib*.so  %{buildroot}%{_libdir}
 cp avTranscoder/build/src/libsAvTranscoder.a  %{buildroot}%{_libdir}
 cp avTranscoder/build/src/AvTranscoder/AvTranscoder.py %{buildroot}%{py_sitedir}/AvTranscoder
 touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 
-%post -p /sbin/ldconfig
+%post
+/sbin/ldconfig
 
-%postun -p /sbin/ldconfig
+%post -n libAvTranscoder0
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
+
+%postun -n libAvTranscoder0
+/sbin/ldconfig
+
 
 %files
 %defattr(-,root,root)
 /%{_bindir}/av*
-/%{_libdir}/lib*.so.*
 /%{_mandir}/man1/*.1.gz
+
+%files -n libAvTranscoder0
+%defattr(-,root,root)
+/%{_libdir}/lib*.so.*
 
 %files devel
 %defattr(-,root,root)
+/%{_libdir}/libAvTranscoder.so
 /%{_libdir}/libsAvTranscoder.a
 
 %files python
 %defattr(-,root,root)
 /%{py_sitedir}
+
+%files java
+%defattr(-,root,root)
+/%{_libdir}/libjAvTranscoder.so
 
 %changelog
 * Sat Mar 1 2014 - arnaud.marcantoine@gmail.com
