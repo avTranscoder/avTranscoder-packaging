@@ -99,11 +99,11 @@ touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 
 %files -n libAvTranscoder0
 %defattr(-,root,root)
-/%{_libdir}/libAvTranscoder.so
 /%{_libdir}/lib*.so.*
 
 %files devel
 %defattr(-,root,root)
+/%{_libdir}/libAvTranscoder.so
 /%{_libdir}/libsAvTranscoder.a
 
 %files python
