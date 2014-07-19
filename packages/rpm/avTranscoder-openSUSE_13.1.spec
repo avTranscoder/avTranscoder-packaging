@@ -92,6 +92,7 @@ touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 /%{_mandir}/man1/*.1.gz
 
 %files -n libAvTranscoder0
+%defattr(-,root,root)
 /%{_libdir}/libAvTranscoder.so
 /%{_libdir}/lib*.so.*
 
