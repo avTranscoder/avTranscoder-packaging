@@ -13,11 +13,13 @@
         */packages/rpm/avTranscoder-Fedora_20.spec
         */packages/rpm/avTranscoder-openSUSE_12.3.spec
         */packages/rpm/avTranscoder-openSUSE_13.1.spec
+        */packages/rpm/avTranscoder-openSUSE_Factory.spec
+        */packages/rpm/avTranscoder-CentOS_CentOS-6.spec
     </param>
   </service>
   <service name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version"/>
 </services>
