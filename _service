@@ -1,0 +1,24 @@
+<services>
+  <service name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/avTranscoder/avTranscoder-packaging.git</param>
+    <param name="filename">avtranscoder</param>
+    <param name="versionprefix">0.1</param>
+    <param name="revision">master</param>
+  </service>
+  <service name="extract_file">
+    <param name="archive">*.tar</param>
+    <param name="files">
+        */packages/rpm/avTranscoder-Fedora_19.spec
+        */packages/rpm/avTranscoder-Fedora_20.spec
+        */packages/rpm/avTranscoder-openSUSE_12.3.spec
+        */packages/rpm/avTranscoder-openSUSE_13.1.spec
+    </param>
+  </service>
+  <service name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version"/>
+</services>
+
