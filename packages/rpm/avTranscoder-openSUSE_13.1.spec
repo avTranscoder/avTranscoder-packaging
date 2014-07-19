@@ -83,6 +83,7 @@ touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 %files
 %defattr(-,root,root)
 /%{_bindir}/av*
+/%{_libdir}/lib*.so
 /%{_libdir}/lib*.so.*
 /%{_mandir}/man1/*.1.gz
 
@@ -91,6 +92,10 @@ touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 /%{_libdir}/libsAvTranscoder.a
 
 %files python
+%defattr(-,root,root)
+/%{py_sitedir}
+
+%files java
 %defattr(-,root,root)
 /%{py_sitedir}
 
