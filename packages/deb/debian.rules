@@ -20,9 +20,8 @@ build-stamp:
 	dh_testdir
 
 	# Add here commands to compile the package.
-	cp tools/sconf/ubuntu.sconf host.sconf
-	echo "with_boost_log = False" >> host.sconf
-	scons -k
+	cp tools/ubuntu.sconf host.sconf
+	scons
 	# --- end custom part for compiling
 
 	touch build
