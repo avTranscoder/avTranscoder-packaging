@@ -17,7 +17,6 @@ BuildRequires:  libavcodec-devel
 BuildRequires:  libswscale-devel
 BuildRequires:  libavresample-devel
 BuildRequires:  freeglut-devel
-BuildRequires:  fdupes
 Source:         %{name}-%{version}.tar.xz
 Provides:       avmeta
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -74,13 +73,11 @@ install -D -m 0644 avTranscoder/app/*/avmeta.man %{buildroot}%{_mandir}/man1/avm
 install -D -m 0644 avTranscoder/app/*/avprocessor.man %{buildroot}%{_mandir}/man1/avprocessor.1
 
 cp avTranscoder/build/src/lib*.so.0.0.1  %{buildroot}%{_libdir}
-cp avTranscoder/build/src/lib*.so.0  %{buildroot}%{_libdir}
-cp avTranscoder/build/src/lib*.so  %{buildroot}%{_libdir}
+cp -P avTranscoder/build/src/lib*.so.0  %{buildroot}%{_libdir}
+cp -P avTranscoder/build/src/lib*.so  %{buildroot}%{_libdir}
 cp avTranscoder/build/src/libsAvTranscoder.a  %{buildroot}%{_libdir}
 cp avTranscoder/build/src/AvTranscoder/AvTranscoder.py %{buildroot}%{py_sitedir}/AvTranscoder
 touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
-%fdupes -s %{buildroot}%{_libdir}/lib*.so.0
-%fdupes -s %{buildroot}%{_libdir}/lib*.so
 
 %post
 /sbin/ldconfig
