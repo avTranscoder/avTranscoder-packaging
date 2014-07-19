@@ -82,9 +82,18 @@ touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 %fdupes -s %{buildroot}%{_libdir}/lib*.so.0
 %fdupes -s %{buildroot}%{_libdir}/lib*.so
 
-%post /sbin/ldconfig
+%post
+/sbin/ldconfig
 
-%postun /sbin/ldconfig
+%post -n libAvTranscoder0
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
+
+%postun -n libAvTranscoder0
+/sbin/ldconfig
+
 
 %files
 %defattr(-,root,root)
