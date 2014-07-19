@@ -9,7 +9,7 @@ Group:          Development/Languages/C and C++
 BuildRequires:  scons >= 2.3.0
 BuildRequires:  gcc-c++
 BuildRequires:  swig
-BuildRequires:  java-1_7_0-openjdk-devel
+BuildRequires:  java-1.6.0-openjdk-devel
 BuildRequires:  python-devel
 BuildRequires:  libavutil-devel
 BuildRequires:  libavformat-devel
@@ -17,7 +17,7 @@ BuildRequires:  libavcodec-devel
 BuildRequires:  libswscale-devel
 BuildRequires:  libavresample-devel
 BuildRequires:  freeglut-devel
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Provides:       avmeta
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

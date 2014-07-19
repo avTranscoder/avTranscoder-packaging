@@ -17,7 +17,7 @@ BuildRequires:  libavcodec-devel
 BuildRequires:  libswscale-devel
 BuildRequires:  libavresample-devel
 BuildRequires:  freeglut-devel
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Provides:       avmeta
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
