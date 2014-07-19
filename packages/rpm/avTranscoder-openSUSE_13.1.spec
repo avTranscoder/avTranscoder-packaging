@@ -26,7 +26,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 High level API to read, decode, transform, encode and write video formats using FFmpeg or LibAV.
 
 %package -n libAvTranscoder0
-Summary: library %{name}
+Summary: Library %{name}
 
 %description -n libAvTranscoder0
 Shared libraries for the package %{name}.
@@ -82,9 +82,9 @@ touch %{buildroot}%{py_sitedir}/AvTranscoder/__init__.py
 %fdupes -s %{buildroot}%{_libdir}/lib*.so.0
 %fdupes -s %{buildroot}%{_libdir}/lib*.so
 
-%post -p /sbin/ldconfig
+%post /sbin/ldconfig
 
-%postun -p /sbin/ldconfig
+%postun /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
