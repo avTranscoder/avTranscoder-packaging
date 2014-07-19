@@ -22,15 +22,15 @@ build-stamp:
 	# Add here commands to compile the package.
 	cp tools/sconf/ubuntu.sconf host.sconf
 	echo "with_boost_log = False" >> host.sconf
-	scons -k sam-do sam-ls sam-rm sam-cp Invert
+	scons -k
 	# --- end custom part for compiling
 
-	touch dist .dist
+	touch build
 
 clean:
 	dh_testdir
 	dh_testroot
-	rm -f dist .dist
+	rm -f build
 
 	# Add here commands to clean up after the build process.
 	scons -c

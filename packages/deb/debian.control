@@ -1,11 +1,11 @@
-Source: tuttleofx
+Source: avtranscoder
 Section: sectionName
 Priority: optional
 Maintainer: Marc-Antoine ARNAUD <arnaud.marcantoine@gmail.com>
-Build-Depends: debhelper (>= 4.1.16), libboost-dev, scons, gcc, g++, swig, swig2.0, python-dev, python-numpy, libfreetype6-dev, libbz2-dev, libcaca-dev, libjpeg-dev, libglew-dev, libilmbase-dev, libopenexr-dev, libmagickcore-dev, libraw-dev, libglu-dev, freeglut3-dev, libglew-dev, graphviz, graphviz-dev 
+Build-Depends: debhelper (>= 4.1.16), scons, gcc, g++, swig, swig2.0, python-dev, freeglut3-dev, 
 
-Package: tuttleofx
+Package: avtranscoder
 Architecture: any
 Depends: ${shlibs:Depends}
-Description: Image processing framework based on OpenFX plugin format.
- TuttleOFX is a library to connect and batch operations with OpenFX plugins. It comes with a set of plugins that allows you to batch process on movies and file sequences.
+Description: C++ API under LibAV and FFmpeg libraries
+ High level API to read, decode, transform, encode and write video formats using FFmpeg or LibAV.
